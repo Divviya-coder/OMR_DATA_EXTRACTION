@@ -150,8 +150,8 @@ const uploadFiles = async (req, res) => {
                 const jsonData = await convertCsvToJson(generatedExcelFolder);
 
                 logWithTimestamp('Processing questions...');
-                const finaloutput = await processQuestions(jsonData, answerKey);
-                console.log(finaloutput)
+                const finaloutput = await processQuestions(jsonData, answerKey, 'GS');
+                // console.log(finaloutput)
                 // logWithTimestamp('Process completed successfully.');
                 return res.status(200).json({
                     message: 'Images uploaded and scripts executed successfully!',
