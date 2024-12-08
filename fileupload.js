@@ -71,7 +71,7 @@ const runMainScript = () => {
         const pythonScript3 = `python3 ${mainScriptPath} --inputDir ${path.resolve(__dirname, '../batch01_output')} --outputDir ${path.resolve(__dirname, '../batch01_result')}`;
 
         logWithTimestamp('Starting main script...');
-        exec(pythonScript3,{ maxBuffer: 10 * 1024 * 1024 }, (error3, stdout3, stderr3) => {
+        exec(pythonScript3, { maxBuffer: 10 * 1024 * 1024 }, (error3, stdout3, stderr3) => {
             if (error3) {
                 logWithTimestamp(`Error executing main script: ${error3.message}`);
                 return reject(`Script 3 Error: ${error3.message}`);
@@ -94,7 +94,7 @@ const runPythonScripts = async () => {
         await runAlignScript();
         // After that, run the main script
         await runMainScript();
-     
+
     } catch (error) {
         logWithTimestamp(`Error running scripts: ${error}`);
     }
@@ -151,8 +151,8 @@ const uploadFiles = async (req, res) => {
 
                 logWithTimestamp('Processing questions...');
                 const finaloutput = await processQuestions(jsonData, answerKey);
-
-                logWithTimestamp('Process completed successfully.');
+                console.log(finaloutput)
+                // logWithTimestamp('Process completed successfully.');
                 return res.status(200).json({
                     message: 'Images uploaded and scripts executed successfully!',
                     pythonOutput,
